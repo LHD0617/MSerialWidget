@@ -1,68 +1,70 @@
-# Serial Port Tool using Qt
+# 使用Qt的串口工具
 
-## Table of Contents
+![Qt Logo](https://www.qt.io/assets/images/qt-logo.svg)
 
-- [Introduction](#introduction)
-- [Features](#features)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Building](#building)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-- [Acknowledgments](#acknowledgments)
+## 目录
 
-## Introduction
+- [简介](#简介)
+- [功能](#功能)
+- [入门指南](#入门指南)
+  - [先决条件](#先决条件)
+  - [构建](#构建)
+- [用法](#用法)
+- [贡献](#贡献)
+- [许可证](#许可证)
+- [致谢](#致谢)
 
-This project is a serial port tool developed using Qt, providing a user interface to interact with serial ports. It allows users to open, close, and switch between available serial ports, with configurable parameters such as baud rate, data bits, parity, and stop bits.
+## 简介
 
-## Features
+这个项目是使用Qt开发的串口工具，提供了一个用户界面来与串口进行交互。用户可以打开、关闭和在可用的串口之间切换，可以配置波特率、数据位、校验和停止位等参数。
 
-- Automatic refreshing of available serial ports
-- Dynamic update of port list in the UI
-- User-friendly interface for configuring serial port parameters
-- Open and close serial ports with a single click
-- Real-time logging of port status
+## 功能
 
-## Getting Started
+- 自动刷新可用的串口
+- 在用户界面中动态更新串口列表
+- 用户友好的界面，用于配置串口参数
+- 通过单击打开和关闭串口
+- 实时记录串口状态
 
-### Prerequisites
+## 入门指南
 
-- Qt 5 or later installed
-- C++ development environment
+### 先决条件
 
-### Building
+- 安装了Qt 5或更高版本
+- C++开发环境
 
-1. Clone the repository:
+### 构建
 
-   ```bash
-   git clone https://github.com/yourusername/serial-port-tool.git
-   ```
+1. 克隆存储库：
 
-2. Open the project in Qt Creator or use qmake to build the project:
+    ```bash
+    git clone https://github.com/yourusername/serial-port-tool.git
+    ```
+
+2. 在Qt Creator中打开项目或使用qmake构建项目：
 
     ```bash
     qmake
     make
-   ```
+    ```
 
-## Usage
+## 用法
 
-1. Launch the application after building.
-2. The available serial ports will be automatically detected and listed.
-3. Configure the desired parameters (baud rate, data bits, parity, stop bits).
-4. Click the "打开串口" button to open the selected serial port.
-5. To close the serial port, click the "关闭串口" button.
+1. 在构建后启动应用程序。
+2. 可用的串口将被自动检测并列出。
+3. 配置所需的参数（波特率、数据位、校验、停止位等）。
+4. 单击“打开串口”按钮以打开所选串口。
+5. 要关闭串口，请单击“关闭串口”按钮。
 
-## Contributing
+## 贡献
 
-Contributions are welcome! Feel free to open issues or pull requests.
+欢迎贡献！请随时提出问题或拉取请求。
 
-## License
+## 许可证
 
-This project is licensed under the MIT License.
+项目根据 MIT许可证 进行许可。
 
-## Acknowledgments
+## 致谢
 
-Special thanks to 满心欢喜 for the initial contribution.
-Feel free to customize the content further according to your project's specific details.
+特别感谢 满心欢喜 提供的初始贡献。
+您可以根据您的喜好随意进一步定制内容。
