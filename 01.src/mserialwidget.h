@@ -4,6 +4,7 @@
 #include <QDebug>
 #include <QWidget>
 #include <QTimer>
+#include <QSerialPort>
 #include <QSerialPortInfo>
 
 namespace Ui {
@@ -20,6 +21,10 @@ public:
 
 private:
     bool switchState;
+
+    QStringList portList;
+
+    QSerialPort serial;
 
     QTimer refreshTimer;
 

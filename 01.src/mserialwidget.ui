@@ -35,13 +35,6 @@
    <property name="spacing">
     <number>20</number>
    </property>
-   <item row="0" column="0">
-    <widget class="QLabel" name="portLab">
-     <property name="text">
-      <string>端  口：</string>
-     </property>
-    </widget>
-   </item>
    <item row="1" column="0">
     <widget class="QLabel" name="baudLab">
      <property name="text">
@@ -74,9 +67,6 @@
       </property>
      </item>
     </widget>
-   </item>
-   <item row="0" column="1">
-    <widget class="QComboBox" name="portCobox"/>
    </item>
    <item row="1" column="1">
     <widget class="QComboBox" name="baudCobox">
@@ -259,6 +249,9 @@
       </size>
      </property>
     </spacer>
+   </item>
+   <item row="0" column="0" colspan="2">
+    <widget class="QComboBox" name="portCobox"/>
    </item>
   </layout>
  </widget>
