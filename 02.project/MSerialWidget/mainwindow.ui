@@ -28,7 +28,7 @@
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="MSerialWidget" name="widget" native="true">
+        <widget class="MSerialWidget" name="serialWidget" native="true">
          <property name="minimumSize">
           <size>
            <width>200</width>

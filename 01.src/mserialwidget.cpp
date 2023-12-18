@@ -11,6 +11,7 @@ MSerialWidget::MSerialWidget(QWidget *parent) :
 {
     switchState = false;
     portList.clear();
+    serial = new QSerialPort();
 
     ui->setupUi(this);
 
@@ -56,13 +57,13 @@ void MSerialWidget::switchPort()
     {
         if (ui->portCobox->count() > 0)
         {
-            serial.setPort(QSerialPortInfo::availablePorts().at(ui->portCobox->currentIndex()));
-            serial.setBaudRate(ui->baudCobox->currentText().toInt());
-            serial.setDataBits(dataBitsMap[ui->dataCobox->currentIndex()]);
-            serial.setParity(parityMap[ui->checkCobox->currentIndex()]);
-            serial.setStopBits(stopBitsMap[ui->stopCobox->currentIndex()]);
+            serial->setPort(QSerialPortInfo::availablePorts().at(ui->portCobox->currentIndex()));
+            serial->setBaudRate(ui->baudCobox->currentText().toInt());
+            serial->setDataBits(dataBitsMap[ui->dataCobox->currentIndex()]);
+            serial->setParity(parityMap[ui->checkCobox->currentIndex()]);
+            serial->setStopBits(stopBitsMap[ui->stopCobox->currentIndex()]);
 
-            if (serial.open(QIODevice::ReadWrite))
+            if (serial->open(QIODevice::ReadWrite))
             {
                 switchState = true;
 
@@ -72,16 +73,16 @@ void MSerialWidget::switchPort()
                 ui->dataCobox->setEnabled(false);
                 ui->checkCobox->setEnabled(false);
                 ui->stopCobox->setEnabled(false);
-                qDebug() << "打开成功";
+                emit log("打开成功");
             }
             else
             {
-                qDebug() << "打开失败";
+                emit log("打开失败");
             }
         }
         else
         {
-            qDebug() << "未搜索到可用串口";
+            emit log("未搜索到可用串口");
         }
     }
     else
@@ -94,8 +95,12 @@ void MSerialWidget::switchPort()
         ui->dataCobox->setEnabled(true);
         ui->checkCobox->setEnabled(true);
         ui->stopCobox->setEnabled(true);
-        serial.close();
-
-        qDebug() << "关闭串口";
+        serial->close();
+        emit log("关闭串口");
     }
+}
+
+bool MSerialWidget::getSwitchState()
+{
+    return switchState;
 }

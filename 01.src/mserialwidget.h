@@ -16,6 +16,10 @@ class MSerialWidget : public QWidget
     Q_OBJECT
 
 public:
+    QSerialPort* serial;
+
+    bool getSwitchState();
+
     explicit MSerialWidget(QWidget *parent = nullptr);
     ~MSerialWidget();
 
@@ -23,8 +27,6 @@ private:
     bool switchState;
 
     QStringList portList;
-
-    QSerialPort serial;
 
     QTimer refreshTimer;
 
@@ -35,6 +37,9 @@ public slots:
 private slots:
     void refreshProt();
     void switchPort();
+
+signals:
+    void log(QString log);
 };
 
 #endif // MSERIALWIDGET_H
