@@ -1,10 +1,28 @@
+/**
+ * @file mserialwidget.cpp
+ * @author 满心欢喜
+ * @brief serial widget tools
+ * @version 0.1
+ * @date 2023-12-18
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
+
+/* @include */
 #include "mserialwidget.h"
 #include "ui_mserialwidget.h"
 
+/* @global */
 static const enum QSerialPort::DataBits dataBitsMap[] = {QSerialPort::Data5, QSerialPort::Data6, QSerialPort::Data7, QSerialPort::Data8};
 static const enum QSerialPort::Parity parityMap[] = {QSerialPort::NoParity, QSerialPort::EvenParity, QSerialPort::OddParity};
 static const enum QSerialPort::StopBits stopBitsMap[] = {QSerialPort::OneStop, QSerialPort::OneAndHalfStop, QSerialPort::TwoStop};
 
+/**
+ * @brief Construct a new MSerialWidget::MSerialWidget object
+ * 
+ * @param parent 
+ */
 MSerialWidget::MSerialWidget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::MSerialWidget)
@@ -21,11 +39,19 @@ MSerialWidget::MSerialWidget(QWidget *parent) :
     refreshTimer.start(100);
 }
 
+/**
+ * @brief Destroy the MSerialWidget::MSerialWidget object
+ * 
+ */
 MSerialWidget::~MSerialWidget()
 {
     delete ui;
 }
 
+/**
+ * @brief Refresh port list.
+ * 
+ */
 void MSerialWidget::refreshProt()
 {
     QStringList list;
@@ -51,6 +77,10 @@ void MSerialWidget::refreshProt()
     }
 }
 
+/**
+ * @brief Switch port list.
+ * 
+ */
 void MSerialWidget::switchPort()
 {
     if (switchState == false)
@@ -100,6 +130,12 @@ void MSerialWidget::switchPort()
     }
 }
 
+/**
+ * @brief Get switch state.
+ * 
+ * @return true connected
+ * @return false unconnect
+ */
 bool MSerialWidget::getSwitchState()
 {
     return switchState;

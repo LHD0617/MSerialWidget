@@ -1,6 +1,18 @@
+/**
+ * @file mserialwidget.h
+ * @author 满心欢喜
+ * @brief serial widget tools
+ * @version 0.1
+ * @date 2023-12-18
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
+
 #ifndef MSERIALWIDGET_H
 #define MSERIALWIDGET_H
 
+/* @include */
 #include <QDebug>
 #include <QWidget>
 #include <QTimer>
