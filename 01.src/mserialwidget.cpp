@@ -163,11 +163,6 @@ void MSerialWidget::readConfig()
     config[2] = settings->value("Parity", ui->checkCobox->currentIndex()).toInt();
     config[3] = settings->value("StopBits", ui->stopCobox->currentIndex()).toInt();
 
-    qDebug() << config[0];
-    qDebug() << config[1];
-    qDebug() << config[2];
-    qDebug() << config[3];
-
     if (config[0] < ui->baudCobox->count())
     {
         ui->baudCobox->setCurrentIndex(config[0]);
