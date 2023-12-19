@@ -146,6 +146,10 @@ bool MSerialWidget::getSwitchState()
     return switchState;
 }
 
+/**
+ * @brief Save config.
+ * 
+ */
 void MSerialWidget::writeConfig()
 {
     settings->setValue("BaudRate", ui->baudCobox->currentIndex());
@@ -154,6 +158,10 @@ void MSerialWidget::writeConfig()
     settings->setValue("StopBits", ui->stopCobox->currentIndex());
 }
 
+/**
+ * @brief Get config.
+ * 
+ */
 void MSerialWidget::readConfig()
 {
     int config[4];
