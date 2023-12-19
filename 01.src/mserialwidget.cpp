@@ -30,8 +30,11 @@ MSerialWidget::MSerialWidget(QWidget *parent) :
     switchState = false;
     portList.clear();
     serial = new QSerialPort();
+    settings = new QSettings("serial.ini", QSettings::IniFormat);
+    qDebug() << "Settings file path: " << settings->fileName();
 
     ui->setupUi(this);
+    readConfig();
 
     connect(ui->switchPbtn, SIGNAL(clicked()), this, SLOT(switchPort()));
     connect(&refreshTimer, SIGNAL(timeout()), this, SLOT(refreshProt()));
@@ -97,6 +100,8 @@ void MSerialWidget::switchPort()
             {
                 switchState = true;
 
+                writeConfig();
+
                 ui->switchPbtn->setText("关闭串口");
                 ui->portCobox->setEnabled(false);
                 ui->baudCobox->setEnabled(false);
@@ -139,4 +144,44 @@ void MSerialWidget::switchPort()
 bool MSerialWidget::getSwitchState()
 {
     return switchState;
+}
+
+void MSerialWidget::writeConfig()
+{
+    settings->setValue("BaudRate", ui->baudCobox->currentIndex());
+    settings->setValue("DataBits", ui->dataCobox->currentIndex());
+    settings->setValue("Parity", ui->checkCobox->currentIndex());
+    settings->setValue("StopBits", ui->stopCobox->currentIndex());
+}
+
+void MSerialWidget::readConfig()
+{
+    int config[4];
+
+    config[0] = settings->value("BaudRate", ui->baudCobox->currentIndex()).toInt();
+    config[1] = settings->value("DataBits", ui->dataCobox->currentIndex()).toInt();
+    config[2] = settings->value("Parity", ui->checkCobox->currentIndex()).toInt();
+    config[3] = settings->value("StopBits", ui->stopCobox->currentIndex()).toInt();
+
+    qDebug() << config[0];
+    qDebug() << config[1];
+    qDebug() << config[2];
+    qDebug() << config[3];
+
+    if (config[0] < ui->baudCobox->count())
+    {
+        ui->baudCobox->setCurrentIndex(config[0]);
+    }
+    if (config[1] < ui->dataCobox->count())
+    {
+        ui->dataCobox->setCurrentIndex(config[1]);
+    }
+    if (config[2] < ui->checkCobox->count())
+    {
+        ui->checkCobox->setCurrentIndex(config[2]);
+    }
+    if (config[3] < ui->stopCobox->count())
+    {
+        ui->stopCobox->setCurrentIndex(config[3]);
+    }
 }

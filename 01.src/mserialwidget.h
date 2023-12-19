@@ -16,6 +16,7 @@
 #include <QDebug>
 #include <QWidget>
 #include <QTimer>
+#include <QSettings>
 #include <QSerialPort>
 #include <QSerialPortInfo>
 
@@ -42,7 +43,12 @@ private:
 
     QTimer refreshTimer;
 
+    QSettings* settings;
+
     Ui::MSerialWidget *ui;
+
+    void writeConfig();
+    void readConfig();
 
 public slots:
 
